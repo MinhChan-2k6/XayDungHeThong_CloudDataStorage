@@ -29,7 +29,7 @@
   }
   function placeholderPlans(root, isDashboard = false) {
     root.replaceChildren();
-    for(const code of ['Free','Basic','Pro']) {
+    for(const code of ['Free','Basic','VIP']) {
       const col=ui.el('div',isDashboard?'col-lg-4 col-md-6':'col-md-4');
       const card=ui.el('article','plan-card h-100');
       card.append(ui.el('h3','plan-name',code),ui.el('p','plan-description','Thông tin giá và dung lượng được lấy từ máy chủ.'),ui.el('div','plan-capacity','—'),ui.el('p','content-muted','Chưa có dữ liệu gói dịch vụ.'));

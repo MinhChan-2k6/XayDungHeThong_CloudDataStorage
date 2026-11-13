@@ -23,6 +23,11 @@ button { color: inherit; } button:disabled { opacity: .5; cursor: wait; }
 .side-link .icon { width: 18px; height: 18px; }
 .side-link:hover { background: #e9eedf; } .side-link.active { background: #dfe8d3; color: #294732; font-weight: 650; }
 .sidebar-storage { border-top: 1px solid #dce3d5; margin-top: 25px; padding: 22px 15px; }
+/* Hide placeholder values before /dashboard/summary returns. Keep their space to prevent layout shifts. */
+.sidebar-storage:not([data-quota-state="ready"]):not([data-quota-state="error"]) > .progress,
+.sidebar-storage:not([data-quota-state="ready"]):not([data-quota-state="error"]) > #quota-label,
+.sidebar-storage:not([data-quota-state="ready"]):not([data-quota-state="error"]) > .plan-note { visibility: hidden; }
+
 .storage-title { display: flex; gap: 10px; align-items: center; font-size: 11px; color: #67775d; }
 .storage-title .icon { width: 18px; } .progress { height: 5px; background: #dde4d5; margin: 16px 0 8px; } .progress-bar { background: #79985f; }
 .sidebar-storage p { font-size: 10px; color: #738267; margin: 0; } .plan-note { display: flex; align-items: center; justify-content: space-between; font-size: 10px; margin-top: 18px; } .plan-note span { letter-spacing: 1px; color: #7f906e; }
@@ -82,6 +87,13 @@ dialog { width: min(440px,calc(100% - 30px)); border: 1px solid #dce5d1; border-
 .breadcrumb-line { display:flex; flex-wrap:wrap; align-items:center; gap:8px; color:#71866b; font-size:13px; }
 .breadcrumb-line a { color:#3a6451; font-weight:650; }
 .breadcrumb-line a:hover { text-decoration:underline; }
+/* Prevent the temporary root-only breadcrumb from flashing while ancestors load. */
+#folder-breadcrumb:not([data-breadcrumb-ready="true"]) { visibility: hidden; }
+.breadcrumb-line { min-width:0; overflow-wrap:anywhere; }
+.breadcrumb-line .breadcrumb-divider { color:#a4b29d; user-select:none; }
+.breadcrumb-line a[aria-current="page"] { color:#173b35; font-weight:750; }
+.breadcrumb-line .breadcrumb-error { color:#91634f; }
+
 .toolbar-actions { display:flex; gap:9px; flex-wrap:wrap; }
 .toolbar-actions .btn { font-size:12px; gap:7px; padding:10px 15px; }
 .upload-status { border:1px solid #cfe0bd; padding:12px 15px; border-radius:11px; background:#f2f8e8; margin-bottom:20px; color:#47643e; font-size:12px; }

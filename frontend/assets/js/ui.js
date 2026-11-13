@@ -37,6 +37,8 @@
     if ($('#quota-label')) $('#quota-label').textContent = quota ? `${fmtBytes(used)} / ${fmtBytes(quota)} đã dùng` : 'Chưa có thông tin dung lượng';
     if ($('#plan-name')) $('#plan-name').textContent = (planName || 'Gói đang dùng').toLocaleUpperCase('vi-VN');
     if ($('#plan-quota')) $('#plan-quota').textContent = fmtBytes(quota);
+    // Reveal the whole sidebar quota block only AFTER all real API values are set.
+    $('.sidebar-storage')?.setAttribute('data-quota-state', 'ready');
   }
   async function refreshQuota() {
     const summary = await app.api.get('/dashboard/summary');
@@ -60,6 +62,7 @@
       notice('Đang xem giao diện thử nghiệm. Chưa có tài khoản thật hoặc dữ liệu trên máy chủ; các thao tác lưu và thanh toán không hoạt động trong chế độ này.', 'warning');
       if ($('#workspace-status')) $('#workspace-status').textContent = 'XEM GIAO DIỆN';
       if ($('#account')) $('#account').textContent = 'DS';
+      // Preview intentionally has no real subscription or storage data.
       $('#logout')?.setAttribute('disabled','true');
       return { id: 'preview', full_name: 'Khách xem trước', role: 'user', preview: true };
     }
@@ -69,8 +72,20 @@
       if (!user?.id) throw new Error('API /auth/me thiếu dữ liệu tài khoản.');
       if ($('#workspace-status')) $('#workspace-status').textContent = user.full_name || user.email || '';
       if ($('#account')) $('#account').textContent = (user.full_name || user.email || '?').trim().split(/\s+/).slice(-2).map(w=>w[0]?.toUpperCase() || '').join('');
-      if (user.role !== 'admin') { const admin = $('[data-nav="admin"]'); if (admin) admin.hidden = true; }
-      try { await refreshQuota(); } catch (error) { notice('Không thể tải thông tin dung lượng: ' + errorMessage(error)); }
+      // Admin navigation stays hidden in HTML until the server confirms role=admin.
+      const adminLink = $('[data-nav="admin"]');
+      if (adminLink) adminLink.hidden = user.role !== 'admin';
+      try { await refreshQuota(); } catch (error) {
+        // Do not show the placeholder or a fabricated Free plan when quota fails.
+        const section = $('.sidebar-storage');
+        if (section?.getAttribute('data-quota-state') !== 'ready') {
+          if ($('#quota-label')) $('#quota-label').textContent = 'Không tải được thông tin dung lượng';
+          if ($('#plan-name')) $('#plan-name').textContent = '—';
+          if ($('#plan-quota')) $('#plan-quota').textContent = '—';
+          section?.setAttribute('data-quota-state', 'error');
+        }
+        notice('Không thể tải thông tin dung lượng: ' + errorMessage(error));
+      }
       return user;
     } catch (error) {
       if (error.status === 401) { const next = new URL(window.location.href).pathname.split('/').pop(); window.location.replace(`login.html?next=${encodeURIComponent(next)}`); return null; }

@@ -26,3 +26,18 @@
 .reveal.is-pending { opacity: 0; transform: translateY(18px); }
 .reveal.is-visible { opacity: 1; transform: none; transition: opacity .55s ease, transform .55s ease; }
 @media (prefers-reduced-motion: reduce) { .reveal.is-pending { opacity: 1; transform: none; } }
+
+/* CloudDS: make Basic plan action readable against its dark featured card.
+   Also applies to the public pricing section; VIP retains the dark button. */
+.plan-card.featured .btn.btn-brand {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--color-ink);
+}
+.plan-card.featured .btn.btn-brand:hover,
+.plan-card.featured .btn.btn-brand:focus-visible,
+.plan-card.featured .btn.btn-brand:active {
+  background-color: #eef2e9;
+  border-color: #eef2e9;
+  color: var(--color-ink);
+}

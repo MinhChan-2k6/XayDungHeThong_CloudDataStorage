@@ -102,6 +102,56 @@
       $('#trash-prev').disabled=page<=1; $('#trash-next').disabled=page>=pages;
     }catch(error){list.replaceChildren();showError(ui.errorMessage(error));}
   }
+  // Breadcrumb is resolved server-side: the list API returns only immediate children,
+  // so traversing every directory from the browser would be slow and incomplete.
+  async function loadBreadcrumb() {
+    const container = $('#folder-breadcrumb');
+    if (!container) return null;
+    let loadError = null;
+    container.setAttribute('role', 'navigation');
+    container.setAttribute('aria-label', 'Đường dẫn thư mục');
+    const parts = [{ id: 'root', name: 'Tệp của tôi' }];
+    try {
+      if (parentId !== 'root' && ui.isPreview) {
+        throw new Error('Chế độ xem trước không có dữ liệu thư mục.');
+      }
+      if (parentId !== 'root') {
+        const ancestors = await api.get(`/folders/${encodeURIComponent(parentId)}/breadcrumb`);
+        if (!Array.isArray(ancestors) || !ancestors.length || ancestors.at(-1)?.id !== parentId) {
+          throw new Error('Máy chủ chưa trả về đường dẫn thư mục hợp lệ.');
+        }
+        const visited = new Set(['root']);
+        for (const item of ancestors) {
+          if (typeof item.id !== 'string' || typeof item.name !== 'string' || !item.name.trim() || visited.has(item.id)) {
+            throw new Error('Đường dẫn thư mục không hợp lệ.');
+          }
+          visited.add(item.id);
+          parts.push({ id: item.id, name: item.name });
+        }
+      }
+      container.replaceChildren();
+      parts.forEach((item, index) => {
+        if (index) container.append(ui.el('span', 'breadcrumb-divider', '/'));
+        const link = ui.el('a', '', item.name);
+        link.href = item.id === 'root' ? 'files.html' : `files.html?parent_id=${encodeURIComponent(item.id)}`;
+        if (index === parts.length - 1 && !term) link.setAttribute('aria-current', 'page');
+        container.append(link);
+      });
+      if (term) {
+        container.append(ui.el('span', 'breadcrumb-divider', '/'), ui.el('span', '', 'Kết quả tìm kiếm'));
+      }
+    } catch (error) {
+      // Never pretend we know the folder path if ownership, deletion or lookup fails.
+      container.replaceChildren();
+      const root = ui.el('a', '', 'Tệp của tôi'); root.href = 'files.html';
+      container.append(root, ui.el('span', 'breadcrumb-divider', '/'),
+        ui.el('span', 'breadcrumb-error', 'Không thể tải đường dẫn thư mục'));
+      loadError = 'Không thể tải đường dẫn thư mục: ' + ui.errorMessage(error);
+    } finally {
+      container.setAttribute('data-breadcrumb-ready', 'true');
+    }
+    return loadError;
+  }
   const reload=()=>isTrash?loadTrash():loadFiles();
   async function showFileInfo(item){
     try {
@@ -205,10 +255,9 @@
       finally{submit.disabled=false;}
     });
     if(term){$('#file-error').hidden=true;$('#page-subtitle').textContent='Tìm toàn bộ tệp theo tên; thư mục được lọc trong vị trí đang mở.';}
-    $('#folder-breadcrumb').replaceChildren();const link=ui.el('a','', 'Tệp của tôi');link.href='files.html';$('#folder-breadcrumb').append(link);
-    if(parentId!=='root') $('#folder-breadcrumb').append(ui.el('span','',' / Thư mục đang mở'));
-    if(term) $('#folder-breadcrumb').append(ui.el('span','',' / Kết quả tìm kiếm'));
     if(user.preview){$('#create-folder').disabled=true;$('#upload-button').disabled=true;}
+    const breadcrumbError = await loadBreadcrumb();
     await loadFiles();
+    if (breadcrumbError && $('#file-error').hidden) showError(breadcrumbError);
   })();
 })();

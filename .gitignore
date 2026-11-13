@@ -1,0 +1,12 @@
+# Secrets and virtual environments
+.env
+**/.env
+**/.venv/
+**/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+*.log
+.vscode/
+.idea/
