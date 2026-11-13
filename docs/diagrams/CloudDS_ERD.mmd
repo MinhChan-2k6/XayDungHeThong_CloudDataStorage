@@ -1,0 +1,108 @@
+erDiagram
+    USERS ||--|| STORAGE_USAGE : "quota accounting"
+    USERS ||--o{ FOLDERS : "owns"
+    USERS ||--o{ FILES : "owns"
+    FOLDERS o|--o{ FOLDERS : "parent of"
+    FOLDERS o|--o{ FILES : "contains"
+    USERS ||--o{ SUBSCRIPTIONS : "has history"
+    PLANS ||--o{ SUBSCRIPTIONS : "defines plan"
+    USERS ||--o{ ORDERS : "places"
+    PLANS ||--o{ ORDERS : "purchased"
+    ORDERS o|--o| SUBSCRIPTIONS : "activates paid plan"
+    ORDERS ||--o{ PAYMENTS : "payment attempts"
+    ORDERS ||--o| INVOICES : "creates receipt"
+    USERS {
+        uuid id PK
+        string full_name
+        string email UK
+        string password_hash
+        string role
+        string status
+        datetime created_at
+        datetime updated_at
+    }
+    STORAGE_USAGE {
+        uuid user_id PK,FK
+        bigint used_bytes
+        bigint reserved_bytes
+        datetime updated_at
+    }
+    FOLDERS {
+        uuid id PK
+        uuid user_id FK
+        uuid parent_id FK
+        string name
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    FILES {
+        uuid id PK
+        uuid user_id FK
+        uuid folder_id FK
+        string name
+        string object_key UK
+        bigint size_bytes
+        string mime_type
+        string storage_state
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    PLANS {
+        uuid id PK
+        string code UK
+        string name
+        bigint quota_bytes
+        bigint price_vnd
+        int duration_days
+        int is_active
+        datetime created_at
+        datetime updated_at
+    }
+    SUBSCRIPTIONS {
+        uuid id PK
+        uuid user_id FK
+        uuid plan_id FK
+        uuid order_id FK,UK
+        bigint quota_bytes
+        string status
+        datetime started_at
+        datetime expires_at
+        datetime ended_at
+        datetime created_at
+    }
+    ORDERS {
+        uuid id PK
+        uuid user_id FK
+        uuid plan_id FK
+        string order_code UK
+        bigint amount_vnd
+        bigint quota_bytes
+        int duration_days
+        string status
+        datetime created_at
+        datetime updated_at
+        datetime paid_at
+    }
+    PAYMENTS {
+        uuid id PK
+        uuid order_id FK
+        string provider
+        string txn_ref UK
+        string provider_txn_no UK
+        bigint amount_vnd
+        string status
+        string response_code
+        datetime created_at
+        datetime updated_at
+        datetime paid_at
+    }
+    INVOICES {
+        uuid id PK
+        uuid order_id FK,UK
+        string invoice_no UK
+        bigint amount_vnd
+        string status
+        datetime issued_at
+    }
