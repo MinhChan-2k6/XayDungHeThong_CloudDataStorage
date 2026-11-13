@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b35"><title>Tổng quan — CloudDS</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <script src="../assets/js/api.js" defer></script><script src="../assets/js/ui.js" defer></script>
+  
+  <script src="../assets/js/dashboard.js" defer></script>
+</head>
+<body class="drive-page" data-page="dashboard">
+  <a class="skip-link" href="#workspace">Đến nội dung chính</a>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="icon-cloud" viewBox="0 0 24 24"><path d="M6 18h12a4 4 0 0 0 0-8 6 6 0 0 0-11.5-2A5 5 0 0 0 6 18Z"/></symbol><symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol><symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 7V5h6l2 3h10v12H3V7Z"/></symbol><symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6m-6 4h6"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol><symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></symbol><symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="icon-device" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol><symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol><symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol><symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M20 3C7 2 2 8 5 15s16 4 15-12Z"/><path d="M3 21 15 9"/></symbol><symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol><symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol><symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3-5.7-3-5.7 3 1.1-6.3-4.6-4.5 6.4-.9Z"/></symbol><symbol id="icon-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.1M3 12h.1M3 18h.1"/></symbol><symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol><symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol><symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><path d="m3 17 5-5 4 4 4-6 5 7"/></symbol><symbol id="icon-close" viewBox="0 0 24 24"><path d="m5 5 14 14M5 19 19 5"/></symbol><symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/></symbol><symbol id="icon-logout" viewBox="0 0 24 24"><path d="M9 4H4v16h5m4-15 7 7-7 7m-5-7h12"/></symbol><symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol><symbol id="icon-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol></svg>
+  <header class="drive-header">
+    <div class="drive-brand">
+      <button class="icon-button mobile-menu" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="sidebar"><svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg></button>
+      <a href="../index.html" class="brand" aria-label="CloudDS trang chủ"><span class="brand-logo"><svg class="icon" aria-hidden="true"><use href="#icon-cloud"></use></svg></span>CloudDS<span class="brand-period">.</span></a>
+    </div>
+    <form class="search-box" role="search" id="global-search-form"><svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg><input id="global-search" type="search" placeholder="Tìm tệp hoặc thư mục…" aria-label="Tìm tệp và thư mục"><kbd>/</kbd></form>
+    <div class="header-actions"><span class="workspace-status" id="workspace-status" aria-live="polite"></span><a class="avatar" id="account" href="profile.html" aria-label="Thông tin tài khoản">?</a><button class="icon-button" id="logout" type="button" title="Đăng xuất" aria-label="Đăng xuất"><svg class="icon" aria-hidden="true"><use href="#icon-logout"></use></svg></button></div>
+  </header>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="Đóng menu" hidden></button>
+  <aside class="drive-sidebar" id="sidebar">
+    <a class="btn btn-brand new-button" href="files.html?upload=1"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg> Tải tệp lên</a>
+    <nav aria-label="Điều hướng không gian"><a class="side-link active" href="dashboard.html" data-nav="dashboard"><svg class="icon" aria-hidden="true"><use href="#icon-grid"></use></svg><span>Tổng quan</span></a>
+<a class="side-link " href="files.html" data-nav="files"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg><span>Tệp của tôi</span></a>
+<a class="side-link " href="trash.html" data-nav="trash"><svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg><span>Thùng rác</span></a>
+<a class="side-link " href="plans.html" data-nav="plans"><svg class="icon" aria-hidden="true"><use href="#icon-cloud"></use></svg><span>Gói dịch vụ</span></a>
+<a class="side-link " href="billing.html" data-nav="billing"><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Thanh toán</span></a>
+<a class="side-link " href="profile.html" data-nav="profile"><svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg><span>Tài khoản</span></a>
+<a class="side-link " href="admin.html" data-nav="admin" hidden><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg><span>Quản trị</span></a></nav>
+    <div class="sidebar-storage">
+      <div class="storage-title"><svg class="icon" aria-hidden="true"><use href="#icon-cloud"></use></svg> Dung lượng lưu trữ</div>
+      <div class="progress" role="progressbar" aria-label="Dung lượng đã dùng" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="quota-meter"><div class="progress-bar" id="quota-bar" style="width:0%"></div></div>
+      <p id="quota-label">Đang tải dung lượng…</p>
+      <div class="plan-note"><span id="plan-name">GÓI ĐANG DÙNG</span><b id="plan-quota">—</b></div>
+    </div>
+    <div class="sidebar-bottom"><span class="live-dot"></span> CloudDS · Không gian cá nhân</div>
+  </aside>
+  <main class="drive-main" id="workspace">
+    <div id="global-notice" class="alert alert-warning" role="status" hidden></div>
+    <div class="page-heading"><div><p class="page-eyebrow">KHÔNG GIAN CỦA BẠN</p><h1 id="page-title">Tổng quan</h1><p id="page-subtitle">Theo dõi dung lượng và hoạt động lưu trữ của bạn.</p></div></div>
+    
+<section class="welcome-banner"><div><span class="banner-label">CHÀO MỪNG ĐẾN CLOUDDS</span><h2>Gọn gàng hơn.<br>Lưu trữ dễ dàng hơn.</h2><p id="greeting">Không gian lưu trữ riêng tư dành cho bạn.</p><a class="banner-link" href="files.html">Mở tệp của tôi <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div><div class="banner-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-file"><svg class="icon" aria-hidden="true"><use href="#icon-file"></use></svg><small>Tài liệu</small><b>DS</b></span><span class="art-folder"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg><small>CloudDS</small></span><span class="art-check"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg></span></div></section>
+<div class="summary-grid" id="summary-cards" aria-live="polite"><article class="summary-card"><small>Đã sử dụng</small><strong id="summary-used">—</strong></article><article class="summary-card"><small>Tổng dung lượng</small><strong id="summary-total">—</strong></article><article class="summary-card"><small>Số tệp</small><strong id="summary-files">—</strong></article><article class="summary-card"><small>Số thư mục</small><strong id="summary-folders">—</strong></article></div>
+<section class="files-section"><div class="section-row"><h2>Tệp ở thư mục gốc</h2><a class="subtle-link" href="files.html">Xem tất cả <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div><div class="file-list" id="recent-files"><p class="content-muted">Đang tải dữ liệu…</p></div></section>
+
+    <p class="workspace-footnote">CloudDS · Một nơi cho mọi tệp của bạn.</p>
+  </main>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:100"><div class="toast show drive-toast" role="status" id="toast" hidden><div class="toast-body" id="toast-message"></div></div></div>
+</body>
+</html>

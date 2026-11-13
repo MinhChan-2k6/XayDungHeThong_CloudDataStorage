@@ -1,0 +1,147 @@
+// CloudDS - ERD DE XUAT | Dung DBML import vao https://dbdiagram.io
+// 9 bang. FK chu so huu parent-folder dung composite reference de tranh cross-user.
+// Tien cua goi la dong VND; bytes va UTC timestamps trong database.
+Project CloudDS {
+  database_type: 'MySQL'
+  Note: 'Design only - chua tao bang MySQL'
+}
+
+Table users {
+  id char(36) [pk, not null]
+  full_name varchar(100) [not null]
+  email varchar(254) [unique, not null]
+  password_hash varchar(255) [not null]
+  role varchar(16) [not null]
+  status varchar(16) [not null]
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table storage_usage {
+  user_id char(36) [pk, not null]
+  used_bytes bigint unsigned [not null]
+  reserved_bytes bigint unsigned [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table folders {
+  id char(36) [pk, not null]
+  user_id char(36) [not null]
+  parent_id char(36)
+  name varchar(255) [not null]
+  deleted_at datetime(6)
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+
+  Indexes {
+    (user_id, parent_id, deleted_at) [name: "idx_folders_navigation"]
+    (user_id, id) [unique, name: "uq_folder_owner_id"]
+  }
+}
+
+Table files {
+  id char(36) [pk, not null]
+  user_id char(36) [not null]
+  folder_id char(36)
+  name varchar(255) [not null]
+  object_key varchar(512) [unique, not null]
+  size_bytes bigint unsigned [not null]
+  mime_type varchar(255) [not null]
+  storage_state varchar(16) [not null]
+  deleted_at datetime(6)
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+
+  Indexes {
+    (user_id, folder_id, deleted_at) [name: "idx_files_navigation"]
+    (user_id, name) [name: "idx_files_name"]
+  }
+}
+
+Table plans {
+  id char(36) [pk, not null]
+  code varchar(32) [unique, not null]
+  name varchar(80) [not null]
+  quota_bytes bigint unsigned [not null]
+  price_vnd bigint unsigned [not null]
+  duration_days int unsigned
+  is_active boolean [not null]
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table subscriptions {
+  id char(36) [pk, not null]
+  user_id char(36) [not null]
+  plan_id char(36) [not null]
+  order_id char(36) [unique]
+  quota_bytes bigint unsigned [not null]
+  status varchar(16) [not null]
+  started_at datetime(6) [not null]
+  expires_at datetime(6)
+  ended_at datetime(6)
+  created_at datetime(6) [not null]
+
+  Indexes {
+    (user_id, status, expires_at) [name: "idx_sub_current"]
+  }
+}
+
+Table orders {
+  id char(36) [pk, not null]
+  user_id char(36) [not null]
+  plan_id char(36) [not null]
+  order_code varchar(40) [unique, not null]
+  amount_vnd bigint unsigned [not null]
+  quota_bytes bigint unsigned [not null]
+  duration_days int unsigned [not null]
+  status varchar(16) [not null]
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+  paid_at datetime(6)
+
+  Indexes {
+    (user_id, created_at) [name: "idx_orders_history"]
+    (user_id, id) [unique, name: "uq_order_owner_id"]
+  }
+}
+
+Table payments {
+  id char(36) [pk, not null]
+  order_id char(36) [not null]
+  provider varchar(16) [not null]
+  txn_ref varchar(64) [unique, not null]
+  provider_txn_no varchar(64) [unique]
+  amount_vnd bigint unsigned [not null]
+  status varchar(16) [not null]
+  response_code varchar(16)
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+  paid_at datetime(6)
+
+  Indexes {
+    (order_id, created_at) [name: "idx_payments_order"]
+  }
+}
+
+Table invoices {
+  id char(36) [pk, not null]
+  order_id char(36) [unique, not null]
+  invoice_no varchar(40) [unique, not null]
+  amount_vnd bigint unsigned [not null]
+  status varchar(16) [not null]
+  issued_at datetime(6) [not null]
+}
+
+Ref: storage_usage.user_id - users.id
+Ref: folders.user_id > users.id
+Ref: folders.(user_id, parent_id) > folders.(user_id, id)
+Ref: files.user_id > users.id
+Ref: files.(user_id, folder_id) > folders.(user_id, id)
+Ref: subscriptions.user_id > users.id
+Ref: subscriptions.plan_id > plans.id
+Ref: subscriptions.(user_id, order_id) > orders.(user_id, id)
+Ref: orders.user_id > users.id
+Ref: orders.plan_id > plans.id
+Ref: payments.order_id > orders.id
+Ref: invoices.order_id - orders.id
