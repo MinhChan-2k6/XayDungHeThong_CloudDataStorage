@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b35">
+  <meta name="description" content="Tạo tài khoản CloudDS — lưu trữ tài liệu và hình ảnh thật gọn gàng.">
+  <title>Tạo tài khoản — CloudDS</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  
+  
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/auth.css">
+  <script src="../assets/js/api.js" defer></script>
+  
+  <script src="../assets/js/auth.js" defer></script>
+</head>
+<body class="auth-page" data-auth-page="register">
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="icon-cloud" viewBox="0 0 24 24"><path d="M6 18h12a4 4 0 0 0 0-8 6 6 0 0 0-11.5-2A5 5 0 0 0 6 18Z"/></symbol>
+<symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 7V5h6l2 3h10v12H3V7Z"/></symbol>
+<symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18M10.7 6.1a12.5 12.5 0 0 1 1.3-.1c6.5 0 10 6 10 6a16 16 0 0 1-3.2 3.7M6.3 6.7C3.5 8.5 2 12 2 12s3.5 6 10 6c1.2 0 2.3-.2 3.3-.6"/><path d="M10 10a3 3 0 0 0 4 4"/></symbol>
+<symbol id="icon-sparkle" viewBox="0 0 24 24"><path d="m12 2 2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6L12 2Z"/></symbol>
+<symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+</svg>
+  <header class="auth-header">
+    <div class="container auth-header-inner">
+      <a class="brand" href="../index.html" aria-label="CloudDS — Trang chủ"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#icon-cloud"></use></svg></span><span>CloudDS<span class="brand-dot">.</span></span></a>
+      <div class="auth-header-action"><span>Đã có tài khoản?</span><a href="login.html">Đăng nhập<svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+    </div>
+  </header>
+  <main id="main" class="auth-main container">
+    <section class="auth-shell" aria-label="Tạo tài khoản CloudDS">
+      <div class="auth-aside">
+        <div class="aside-glow aside-glow-one" aria-hidden="true"></div><div class="aside-glow aside-glow-two" aria-hidden="true"></div>
+        <div class="aside-content">
+          <div class="aside-label"><svg class="icon" aria-hidden="true"><use href="#icon-sparkle"></use></svg>BẮT ĐẦU VỚI gói Free MIỄN PHÍ</div>
+          <h1>Dữ liệu của bạn.<br><em>Không gian của bạn.</em></h1>
+          <p>Từ những tài liệu học tập đến dự án lớn tiếp theo. Tất cả có một nơi để bắt đầu.</p>
+          <div class="aside-illustration" aria-hidden="true"><div class="illus-top"><span class="illus-dots"><i></i><i></i><i></i></span><span>CloudDS / My space</span><svg class="icon"><use href="#icon-cloud"></use></svg></div><div class="illus-body"><div class="illus-title"><div><small>Không gian lưu trữ</small><strong>Gọn gàng hơn mỗi ngày.</strong></div><span class="illus-plus">+</span></div><div class="illus-folders"><span><svg class="icon"><use href="#icon-folder"></use></svg><b>Tài liệu</b><small>Đồng hành học tập</small></span><span><svg class="icon"><use href="#icon-folder"></use></svg><b>Hình ảnh</b><small>Khoảnh khắc đẹp</small></span></div><div class="illus-capacity"><span>Không gian của bạn</span><b>gói Free</b><div class="illus-progress"><i></i></div></div></div></div>
+          <div class="aside-bottom"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Thiết kế để dữ liệu luôn có chỗ của riêng mình.</div>
+        </div>
+      </div>
+      <div class="auth-form-side">
+        <div class="form-content" id="auth-form-content">
+          <div class="form-topline"><span class="eyebrow">CLOUDDS ACCOUNT</span><span class="form-step">01 / ĐĂNG KÝ</span></div>
+          <h2>Bắt đầu cùng CloudDS.</h2><p class="form-subtitle">Một tài khoản, mọi tệp quan trọng trong tầm tay.</p>
+          <div class="form-message" id="form-message" role="alert" hidden></div>
+          <noscript><p class="alert alert-warning">Vui lòng bật JavaScript để sử dụng biểu mẫu.</p></noscript><form id="auth-form" method="post" novalidate><fieldset id="auth-fields" disabled>
+            <div class="field" data-field="name"><label for="name">Họ và tên</label><div class="input-wrap"><input class="form-control" id="name" name="name" type="text" placeholder="Nguyễn Minh Anh" autocomplete="name" minlength="2" maxlength="80" required aria-describedby="name-error" spellcheck="false"></div><p class="field-error" id="name-error" aria-live="polite"></p></div><div class="field" data-field="email"><label for="email">Email</label><div class="input-wrap"><input class="form-control" id="email" name="email" type="email" placeholder="tenban@example.com" autocomplete="email" maxlength="254" required aria-describedby="email-error" spellcheck="false"></div><p class="field-error" id="email-error" aria-live="polite"></p></div><div class="field" data-field="password"><label for="password">Mật khẩu</label><div class="input-wrap"><input class="form-control" id="password" name="password" type="password" placeholder="Nhập mật khẩu của bạn" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="password-error" spellcheck="false"><button class="visibility-toggle" type="button" aria-label="Hiện mật khẩu" aria-pressed="false" data-toggle-password="password"><svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg></button></div><p class="field-error" id="password-error" aria-live="polite"></p></div><div class="password-guide" id="password-guide"><div class="password-meter" role="meter" aria-label="Độ mạnh mật khẩu" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span></span><span></span><span></span><span></span></div><p id="password-strength" class="password-strength">Sử dụng từ 8 ký tự, có chữ và số.</p><div class="password-hints"><span id="hint-length"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> 8 ký tự trở lên</span><span id="hint-letter"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Có chữ cái</span><span id="hint-number"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Có chữ số</span></div></div><div class="field" data-field="confirmPassword"><label for="confirmPassword">Xác nhận mật khẩu</label><div class="input-wrap"><input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="confirmPassword-error" spellcheck="false"><button class="visibility-toggle" type="button" aria-label="Hiện mật khẩu" aria-pressed="false" data-toggle-password="confirmPassword"><svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg></button></div><p class="field-error" id="confirmPassword-error" aria-live="polite"></p></div>
+            <button id="submit-button" class="btn btn-brand form-submit" type="submit"><span class="submit-label">Tạo tài khoản miễn phí</span><svg class="icon submit-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg><span class="spinner-border spinner-border-sm submit-spinner" aria-hidden="true"></span></button>
+          </fieldset></form>
+          <div class="form-note"><svg class="icon" aria-hidden="true"><use href="#icon-lock"></use></svg><span>Đăng ký được xử lý qua máy chủ CloudDS; mật khẩu không được lưu trong trình duyệt.</span></div>
+          <p class="form-switch">Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a></p>
+        </div>
+        <section class="auth-success" id="auth-success" hidden tabindex="-1" aria-live="polite"><span class="success-mark"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg></span><h2>Tạo tài khoản thành công.</h2><p>Tài khoản đã được tạo. Hãy đăng nhập để sử dụng CloudDS.</p><a class="btn btn-brand" href="login.html">Khám phá không gian<svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></section>
+      </div>
+    </section>
+  </main>
+  <footer class="auth-footer"><div class="container"><span>© <span id="current-year">2026</span> CloudDS.</span><a href="../index.html">Trở về trang chủ <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div></footer>
+</body>
+</html>
