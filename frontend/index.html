@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b35">
+  <meta name="description" content="CloudDS — Không gian lưu trữ cho tài liệu, hình ảnh và những điều quan trọng. Bắt đầu miễn phí và lựa chọn gói lưu trữ phù hợp.">
+  <title>CloudDS — Một nơi cho mọi tệp của bạn</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <!-- Bootstrap được lưu nội bộ, không cần CDN khi mở trang. -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+      <link rel="stylesheet" href="assets/css/components.css">
+    <script src="assets/js/api.js" defer></script>
+  <script src="assets/js/ui.js" defer></script><script src="assets/js/plans.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="icon-cloud" viewBox="0 0 24 24"><path d="M6 18h12a4 4 0 0 0 0-8 6 6 0 0 0-11.5-2A5 5 0 0 0 6 18Z"/></symbol><symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol><symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 7V5h6l2 3h10v12H3V7Z"/></symbol><symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6m-6 4h6"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol><symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></symbol><symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="icon-device" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol><symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol><symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol><symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M20 3C7 2 2 8 5 15s16 4 15-12Z"/><path d="M3 21 15 9"/></symbol><symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol></svg>
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="CloudDS — Trang chủ"><span class="brand-mark"><svg class="icon " aria-hidden="true"><use href="#icon-cloud"></use></svg></span><span>CloudDS<span class="brand-dot">.</span></span></a>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" aria-label="Mở menu"><svg class="icon " aria-hidden="true"><use href="#icon-menu"></use></svg></button>
+      <nav class="desktop-nav" id="main-navigation" aria-label="Điều hướng chính">
+        <div class="nav-links">
+          <a href="#features">Tính năng</a><a href="#how-it-works">Cách hoạt động</a><a href="#pricing">Gói lưu trữ</a><a href="#contact">Hỗ trợ</a>
+        </div>
+        <div class="nav-actions">
+          <a class="login-link" href="pages/login.html">Đăng nhập</a>
+          <a class="btn btn-brand" href="pages/register.html">Đăng ký miễn phí <svg class="icon " aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge"><span>HELLO, CLOUD!</span> Một không gian mới cho dữ liệu của bạn</div>
+            <h1 id="hero-title">Mọi tệp của bạn.<br>Một nơi <em>thật gọn.</em></h1>
+            <p class="hero-copy">Tài liệu học tập, những bức ảnh yêu thích hay dự án tiếp theo. Gom tất cả về một nơi, để bạn có thêm không gian cho điều quan trọng.</p>
+            <div class="hero-actions">
+              <a class="btn btn-brand" href="pages/register.html">Nhận ngay gói Free <svg class="icon " aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="btn btn-light-outline" href="#features">Khám phá CloudDS</a>
+            </div>
+            <p class="hero-note"><svg class="icon " aria-hidden="true"><use href="#icon-check"></use></svg> Bắt đầu miễn phí. Không cần thẻ thanh toán.</p>
+          </div>
+          <div class="hero-visual" role="img" aria-label="Minh họa không gian lưu trữ CloudDS với thư mục và các tệp.">
+            <div class="visual-orbit" aria-hidden="true"></div>
+            <div class="app-preview" aria-hidden="true">
+              <div class="app-chrome"><i></i><i></i><i></i><span>Không gian của bạn</span><svg class="icon " aria-hidden="true"><use href="#icon-lock"></use></svg></div>
+              <div class="app-content">
+                <div class="app-sidebar">
+                  <div class="app-logo"><svg class="icon " aria-hidden="true"><use href="#icon-cloud"></use></svg> CloudDS.</div>
+                  <div class="app-nav active"><svg class="icon " aria-hidden="true"><use href="#icon-grid"></use></svg> Tệp của tôi</div>
+                  <div class="app-nav"><svg class="icon " aria-hidden="true"><use href="#icon-clock"></use></svg> Gần đây</div>
+                  <div class="app-nav"><svg class="icon " aria-hidden="true"><use href="#icon-folder"></use></svg> Thư mục</div>
+                  <div class="app-quota">Dung lượng lưu trữ<div class="quota-bar"><span></span></div>Theo dõi dung lượng</div>
+                </div>
+                <div class="app-main">
+                  <div class="app-main-top">Chào bạn, <svg class="icon " aria-hidden="true"><use href="#icon-leaf"></use></svg><span class="mock-upload">+ Tải tệp lên</span></div>
+                  <p class="app-sub">Một ngày mới, mọi thứ vẫn ở đây.</p>
+                  <div class="folder-grid">
+                    <div class="mock-folder"><svg class="icon " aria-hidden="true"><use href="#icon-folder"></use></svg>Tài liệu<small>12 tệp</small></div>
+                    <div class="mock-folder"><svg class="icon " aria-hidden="true"><use href="#icon-folder"></use></svg>Hình ảnh<small>24 tệp</small></div>
+                    <div class="mock-folder"><svg class="icon " aria-hidden="true"><use href="#icon-folder"></use></svg>Dự án<small>08 tệp</small></div>
+                  </div>
+                  <p class="recent-label">Tệp gần đây</p>
+                  <div class="mock-file"><span class="file-icon"><svg class="icon " aria-hidden="true"><use href="#icon-file"></use></svg></span>Đề cương học tập.pdf<small>2.4 MB</small></div>
+                  <div class="mock-file"><span class="file-icon"><svg class="icon " aria-hidden="true"><use href="#icon-file"></use></svg></span>Kế hoạch dự án.docx<small>1.8 MB</small></div>
+                  <div class="mock-file"><span class="file-icon"><svg class="icon " aria-hidden="true"><use href="#icon-file"></use></svg></span>Một ngày ở Đà Lạt.jpg<small>4.2 MB</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="float-card float-free" aria-hidden="true"><span class="float-symbol"><svg class="icon " aria-hidden="true"><use href="#icon-cloud"></use></svg></span><div><strong>Gói Free của bạn</strong><small>Miễn phí để bắt đầu</small></div></div>
+            <div class="float-card float-success" aria-hidden="true"><span class="float-symbol"><svg class="icon " aria-hidden="true"><use href="#icon-check"></use></svg></span><div><strong>Mọi thứ, ngăn nắp hơn.</strong><small>Sẵn sàng cho ý tưởng tiếp theo</small></div></div>
+            
+          </div>
+        </div>
+        <div class="value-strip" aria-label="Điểm nổi bật">
+          <span class="value-item"><svg class="icon " aria-hidden="true"><use href="#icon-cloud"></use></svg> Bắt đầu với gói Free</span>
+          <span class="value-item"><svg class="icon " aria-hidden="true"><use href="#icon-folder"></use></svg> Tệp gọn gàng, dễ tìm</span>
+          <span class="value-item"><svg class="icon " aria-hidden="true"><use href="#icon-device"></use></svg> Giao diện trên mọi màn hình</span>
+          <span class="value-item"><svg class="icon " aria-hidden="true"><use href="#icon-leaf"></use></svg> Nhẹ nhàng từ lần đầu dùng</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-intro reveal"><div><span class="eyebrow">Ít lộn xộn. Nhiều cảm hứng.</span><h2 class="section-heading" id="features-title">Dành chỗ cho điều quan trọng.</h2></div><p class="section-copy">Một trải nghiệm lưu trữ được thiết kế để những việc quen thuộc trở nên đơn giản hơn.</p></div>
+        <div class="row g-4">
+          <div class="col-md-4 reveal"><article class="feature-card"><span class="feature-icon"><svg class="icon " aria-hidden="true"><use href="#icon-upload"></use></svg></span><h3>Đưa tệp lên, thật dễ</h3><p>Không gian dành cho tài liệu, hình ảnh và các tệp của bạn. Thao tác rõ ràng, dễ làm quen ngay từ đầu.</p></article></div>
+          <div class="col-md-4 reveal"><article class="feature-card"><span class="feature-icon"><svg class="icon " aria-hidden="true"><use href="#icon-folder"></use></svg></span><h3>Mọi thứ đúng vị trí</h3><p>Sắp xếp theo thư mục, đặt tên dễ nhớ và tìm lại những gì bạn cần. Để lần mở tệp tiếp theo bớt mất thời gian.</p></article></div>
+          <div class="col-md-4 reveal"><article class="feature-card"><span class="feature-icon"><svg class="icon " aria-hidden="true"><use href="#icon-download"></use></svg></span><h3>Sẵn sàng khi bạn cần</h3><p>Xem danh sách và tải tệp về từ trình duyệt. Tiếp tục công việc trên máy tính hay màn hình nhỏ của bạn.</p></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow" id="how-it-works" aria-labelledby="workflow-title">
+      <div class="container workflow-grid">
+        <div class="reveal"><span class="eyebrow">Bắt đầu thật đơn giản</span><h2 class="section-heading" id="workflow-title">Một nơi mới.<br>Ba bước quen thuộc.</h2><p class="section-copy mt-3">Không cần cài thêm ứng dụng. Hành trình lưu trữ bắt đầu ngay trên trình duyệt.</p><a class="text-link mt-2" href="pages/register.html">Tạo không gian của bạn <svg class="icon " aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="reveal">
+          <article class="step"><span class="step-number">01 /</span><div><h3>Tạo tài khoản</h3><p>Đăng ký bằng email để bắt đầu với gói Free.</p></div></article>
+          <article class="step"><span class="step-number">02 /</span><div><h3>Thêm những tệp đầu tiên</h3><p>Tải lên tài liệu, hình ảnh và sắp xếp theo cách của bạn.</p></div></article>
+          <article class="step"><span class="step-number">03 /</span><div><h3>Tìm lại, tải về, tiếp tục</h3><p>Đăng nhập khi cần để truy cập không gian lưu trữ của mình.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="center-heading reveal"><span class="eyebrow">Không gian vừa với bạn</span><h2 class="section-heading" id="pricing-title">Bắt đầu nhỏ. Sẵn sàng lớn hơn.</h2><p class="section-copy">Từ vài tài liệu đầu tiên đến cả một kho ý tưởng.<br>Chọn mức dung lượng phù hợp với hành trình của bạn.</p></div>
+        <div class="row g-4 align-items-stretch" id="home-plans" aria-live="polite">
+          <div class="col-12"><p class="plan-loading">Đang tải các gói lưu trữ từ hệ thống…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div class="faq-intro reveal"><span class="eyebrow">Có thể bạn đang thắc mắc</span><h2 class="section-heading" id="faq-title">Một vài câu hỏi,<br>trước khi bắt đầu.</h2><p class="section-copy mt-3">Hiểu rõ không gian của mình, để an tâm lưu những điều quan trọng.</p><a class="text-link mt-2" href="#faq">Xem câu hỏi thường gặp <svg class="icon " aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="reveal">
+          <details class="faq-item" open><summary>Gói Free có cần thanh toán không?</summary><p>Không. Khi đăng ký thành công, bạn sẽ được cấp gói Free theo chính sách hiện hành.</p></details>
+          <details class="faq-item"><summary>Tôi có thể lưu những loại tệp nào?</summary><p>Bạn có thể lưu tài liệu, hình ảnh và các tệp phục vụ học tập, công việc. Dung lượng sử dụng được tính theo tổng kích thước tệp trong tài khoản.</p></details>
+          <details class="faq-item"><summary>Có thể sử dụng trên điện thoại không?</summary><p>Giao diện được thiết kế thích ứng với điện thoại, máy tính bảng và máy tính. Bạn có thể mở bằng trình duyệt mà không cần cài thêm ứng dụng.</p></details>
+          <details class="faq-item"><summary>Khi dùng hết dung lượng thì sao?</summary><p>Bạn có thể xóa bớt tệp không còn cần thiết hoặc chọn gói dung lượng lớn hơn. Theo dõi mức sử dụng trong tài khoản để chủ động sắp xếp dữ liệu.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="signup-section" aria-labelledby="signup-title"><div class="container"><div class="signup-panel reveal"><div><span class="eyebrow">Một khởi đầu, nhiều khả năng</span><h2 id="signup-title">Không gian cho bạn.<br>Và những điều sắp tới.</h2><p>Bắt đầu hành trình lưu trữ với gói Free.</p></div><div class="signup-action"><a class="btn btn-brand" href="pages/register.html">Đăng ký nhận dung lượng miễn phí <svg class="icon " aria-hidden="true"><use href="#icon-arrow"></use></svg></a><small>Không cần thẻ thanh toán</small></div></div></div></section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about"><a class="brand" href="index.html" aria-label="CloudDS — Trang chủ"><span class="brand-mark"><svg class="icon " aria-hidden="true"><use href="#icon-cloud"></use></svg></span><span>CloudDS<span class="brand-dot">.</span></span></a><p>Một nơi cho tài liệu, ý tưởng và những điều bạn muốn giữ lại.</p></div>
+        <div><h2 class="footer-heading">Khám phá</h2><ul class="footer-links"><li><a href="#features">Tính năng</a></li><li><a href="#how-it-works">Cách hoạt động</a></li><li><a href="#pricing">Gói lưu trữ</a></li></ul></div>
+        <div><h2 class="footer-heading">Hỗ trợ</h2><ul class="footer-links"><li><a href="#faq">Câu hỏi thường gặp</a></li><li><a href="pages/login.html">Đăng nhập</a></li><li><a href="pages/register.html">Tạo tài khoản</a></li></ul></div>
+        <div class="footer-contact"><h2 class="footer-heading">Cần trợ giúp?</h2><p class="small text-secondary mb-2">Tìm hiểu cách tạo tài khoản, quản lý dung lượng và sử dụng CloudDS.</p><a class="text-link" href="#faq">Xem câu hỏi thường gặp <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="current-year">2026</span> CloudDS. All rights reserved.</span><span>Được tạo để mọi thứ gọn gàng hơn.</span></div>
+    </div>
+  </footer>
+</body>
+</html>
